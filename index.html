@@ -1,12 +1,482 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Flamingo Cycling Club</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101014">
+<meta name="description" content="Flamingo Cycling Club aus Vreden. Road, Gravel, Community und gemeinsame Ausfahrten im Münsterland.">
+<title>Flamingo Cycling Club | Vreden</title>
+
+<style>
+:root {
+  --pink: #ff3b91;
+  --dark: #101014;
+  --card: #1b1b22;
+  --white: #ffffff;
+  --muted: #b7b7c2;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--dark);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+a { color: inherit; }
+
+header {
+  background: rgba(16,16,20,.96);
+  border-bottom: 1px solid #303039;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav {
+  max-width: 1150px;
+  margin: auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  color: var(--pink);
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.navlinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.navlinks a {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.navlinks a:hover { color: var(--pink); }
+
+.hero {
+  min-height: 620px;
+  padding: 110px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 50% 15%, #732044 0%, transparent 48%),
+    linear-gradient(145deg, #191921, #08080b);
+}
+
+.hero .bird { font-size: 90px; }
+
+.eyebrow {
+  color: var(--pink);
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+h1 {
+  font-size: clamp(44px, 9vw, 100px);
+  line-height: 1.02;
+  letter-spacing: -3px;
+  margin: 20px 0;
+  font-weight: 900;
+}
+
+h1 span { color: var(--pink); }
+
+.hero p {
+  max-width: 650px;
+  color: #ddd;
+  font-size: 18px;
+}
+
+.buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 26px;
+  border-radius: 7px;
+  background: var(--pink);
+  color: #101014;
+  font-weight: 800;
+  text-decoration: none;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  background: #ff70ae;
+}
+
+.btn.outline {
+  color: white;
+  background: transparent;
+  border: 1px solid #777;
+}
+
+.btn.outline:hover { border-color: var(--pink); }
+
+section {
+  max-width: 1150px;
+  margin: auto;
+  padding: 90px 24px;
+}
+
+.section-title {
+  font-size: clamp(32px, 5vw, 50px);
+  line-height: 1.15;
+  margin: 12px 0 25px;
+}
+
+.muted { color: var(--muted); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 22px;
+  margin-top: 35px;
+}
+
+.card {
+  background: var(--card);
+  padding: 35px;
+  border: 1px solid #303039;
+  border-radius: 14px;
+}
+
+.card h3 {
+  color: var(--pink);
+  font-size: 26px;
+}
+
+.card .icon { font-size: 45px; }
+
+.card p { color: #c9c9d0; }
+
+.full {
+  max-width: none;
+  background: #17171d;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.center { text-align: center; }
+
+.highlight {
+  border: 1px solid #783452;
+  background: linear-gradient(135deg,#261722,#17171d);
+}
+
+.tag {
+  display: inline-block;
+  color: var(--pink);
+  border: 1px solid #74304e;
+  border-radius: 30px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.kit {
+  margin-top: 35px;
+  padding: 65px 25px;
+  border-radius: 15px;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0px,
+      transparent 35px,
+      rgba(255,59,145,.04) 36px,
+      rgba(255,59,145,.04) 38px
+    ),
+    #1b1b22;
+  text-align: center;
+  border: 1px solid #353039;
+}
+
+.kit .symbol { font-size: 75px; }
+
+.kit h3 {
+  font-size: clamp(28px,5vw,55px);
+  margin: 10px 0;
+}
+
+.kit h3 span { color: var(--pink); }
+
+footer {
+  padding: 45px 20px;
+  text-align: center;
+  border-top: 1px solid #303039;
+  color: #aaa;
+}
+
+footer strong { color: var(--pink); }
+
+@media(max-width:700px) {
+  nav { justify-content: center; }
+  .navlinks { justify-content: center; }
+  .grid { grid-template-columns: 1fr; }
+  section { padding: 65px 20px; }
+  .hero { min-height: 540px; padding: 75px 20px; }
+  .card { padding: 25px; }
+}
+</style>
 </head>
-<body style="background:#111;color:#ff3b91;text-align:center;padding:60px;font-family:Arial">
-  <h1>🦩 FLAMINGO CYCLING CLUB</h1>
-  <h2>VREDEN · MÜNSTERLAND</h2>
+
+<body>
+
+<header>
+<nav>
+  <a class="logo" href="#">🦩 FLAMINGO CC</a>
+  <div class="navlinks">
+    <a href="#about">ÜBER UNS</a>
+    <a href="#rides">RIDES</a>
+    <a href="#apparel">APPAREL</a>
+    <a href="#partners">PARTNER</a>
+  </div>
+</nav>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="bird">🦩</div>
+  <div class="eyebrow">VREDEN · MÜNSTERLAND · EST. 2026</div>
+  <h1>FIND YOUR<br><span>FLOCK.</span></h1>
+  <p>
+    Ride your way. Gemeinsam unterwegs auf Rennrad und Gravelbike.
+    Neue Leute, gute Rides und jede Menge gemeinsame Kilometer.
+  </p>
+
+  <div class="buttons">
+    <a class="btn"
+       href="https://joinride.cc/pro/flamingo-cycling-club/activities"
+       target="_blank" rel="noopener noreferrer">
+       UNSERE RIDES →
+    </a>
+    <a class="btn outline" href="#about">
+       DISCOVER FCC
+    </a>
+  </div>
+</div>
+
+<section id="about">
+  <div class="eyebrow">WHO WE ARE</div>
+  <h2 class="section-title">NOT JUST A CLUB.<br>IT'S A COMMUNITY.</h2>
+
+  <p class="muted">
+    Der Flamingo Cycling Club wurde 2026 in Vreden von zwei
+    radsportbegeisterten Freunden gegründet.
+  </p>
+
+  <p>
+    Unsere Idee ist einfach: Menschen zusammenbringen,
+    die ihre Leidenschaft fürs Radfahren teilen.
+    Egal ob Rennrad oder Gravelbike – bei uns stehen
+    gemeinsame Erlebnisse, sportliche Herausforderungen
+    und der Spaß am Radfahren im Mittelpunkt.
+  </p>
+
+  <p>
+    Wir starten in Vreden und möchten eine offene,
+    wachsende Cycling-Community im gesamten Münsterland
+    und darüber hinaus aufbauen.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🦩</div>
+      <h3>THE FOUNDERS</h3>
+      <p>
+        Gegründet 2026 von zwei Freunden mit einer gemeinsamen
+        Leidenschaft: Cycling.
+      </p>
+      <p><strong>Gründer & Marco – Mitgründer</strong></p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🩷</div>
+      <h3>EVERYONE WELCOME</h3>
+      <p>
+        Du musst kein Profi sein. Wir möchten Menschen
+        verbinden, die gerne gemeinsam Rad fahren.
+        Respekt und Zusammenhalt gehören für uns dazu.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="rides" class="full">
+<div class="inner">
+
+  <div class="eyebrow">LET'S RIDE</div>
+  <h2 class="section-title">ROAD. GRAVEL.<br>GOOD TIMES.</h2>
+
+  <p class="muted">
+    Entdecke unsere gemeinsamen Ausfahrten.
+    Die aktuellen Termine und Treffpunkte findest du auf Joinride.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🚴</div>
+      <h3>ROAD RIDES</h3>
+      <p>
+        Gemeinsam Kilometer sammeln, trainieren und
+        die Straßen rund um Vreden erkunden.
+      </p>
+      <span class="tag">ROAD CYCLING</span>
+    </div>
+
+    <div class="card">
+      <div class="icon">🌲</div>
+      <h3>GRAVEL RIDES</h3>
+      <p>
+        Abseits der Straßen neue Wege entdecken.
+        Abenteuer, Natur und gemeinsames Graveln.
+      </p>
+      <span class="tag">GRAVEL ADVENTURE</span>
+    </div>
+  </div>
+
+  <div class="card highlight center" style="margin-top:25px">
+    <h3>JOIN THE NEXT RIDE 🦩</h3>
+    <p>
+      Wir organisieren unsere Ausfahrten über Joinride.
+      Dort kannst du dich anmelden und deine Teilnahme bestätigen.
+    </p>
+    <p>
+      Falls du die Anmeldung mal vergisst, ist das
+      natürlich kein Problem!
+    </p>
+    <div class="buttons">
+      <a class="btn"
+         href="https://joinride.cc/pro/flamingo-cycling-club/activities"
+         target="_blank" rel="noopener noreferrer">
+         ALLE AUSFAHRTEN ANSEHEN →
+      </a>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="apparel">
+  <div class="eyebrow">RIDE IN STYLE</div>
+  <h2 class="section-title">FLAMINGO<br>CYCLING APPAREL.</h2>
+
+  <p class="muted">
+    Unsere Vision: Eine eigene Cycling-Kollektion,
+    die auffällt und verbindet.
+  </p>
+
+  <div class="kit">
+    <div class="symbol">🦩</div>
+    <h3>FLAMINGO <span>CC.</span></h3>
+    <p>ROAD SERIES · GRAVEL SERIES</p>
+    <span class="tag">COMING SOON</span>
+    <p class="muted">
+      Performance. Community. Identity.
+    </p>
+  </div>
+</section>
+
+<section id="partners" class="full">
+<div class="inner">
+  <div class="eyebrow">GROW WITH US</div>
+  <h2 class="section-title">BECOME A<br>FOUNDING PARTNER.</h2>
+
+  <p>
+    Der Flamingo Cycling Club steht noch ganz am Anfang.
+    Gemeinsam mit starken Partnern aus Vreden und der Region
+    möchten wir eine besondere Cycling-Community aufbauen.
+  </p>
+
+  <p class="muted">
+    Wir suchen Unternehmen, die unsere Leidenschaft teilen
+    und uns auf diesem Weg begleiten möchten.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>🤝 PARTNERSHIP</h3>
+      <p>
+        Gemeinsam wachsen, lokale Verbindungen stärken
+        und neue Ideen entwickeln.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🦩 FOUNDING PARTNER</h3>
+      <p>
+        Werde Teil unserer Geschichte und unterstütze
+        den Flamingo Cycling Club von Anfang an.
+      </p>
+    </div>
+  </div>
+
+  <p style="margin-top:30px">
+    Interesse an einer Partnerschaft?
+    Kontaktiere uns über unsere Clubkanäle.
+  </p>
+</div>
+</section>
+
+<section class="center">
+  <div class="eyebrow">THE FLOCK IS GROWING</div>
+  <h2 class="section-title">DON'T RIDE ALONE.<br>RIDE WITH US.</h2>
+
+  <p class="muted">
+    Werde Teil des Flamingo Cycling Club.
+    Wir freuen uns auf neue Gesichter!
+  </p>
+
+  <div class="buttons">
+    <a class="btn"
+       href="https://joinride.cc/pro/flamingo-cycling-club/activities"
+       target="_blank" rel="noopener noreferrer">
+       JOIN OUR RIDES
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <strong>🦩 FLAMINGO CYCLING CLUB</strong>
+  <p>VREDEN · MÜNSTERLAND · EST. 2026</p>
   <p>FIND YOUR FLOCK. RIDE YOUR WAY.</p>
+  <p>© 2026 Flamingo Cycling Club</p>
+</footer>
+
 </body>
 </html>
